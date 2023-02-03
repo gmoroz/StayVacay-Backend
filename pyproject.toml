@@ -7,7 +7,7 @@ authors = ["gmoroz <12345hasek@gmail.com>"]
 [tool.poetry.dependencies]
 python = "^3.9"
 fastapi = "^0.67.0"
-sqlalchemy = "^2.0.1"
+databases = {extras = ["postgresql"], version = "^0.7.0"}
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
