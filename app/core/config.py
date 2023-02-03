@@ -1,4 +1,3 @@
-
 import os
 from typing import Any, Dict, List, Optional, Union
 
@@ -6,8 +5,16 @@ from pydantic import AnyHttpUrl, BaseSettings, PostgresDsn, validator
 
 
 class Settings(BaseSettings):
-    PROJECT_NAME: str
-    BACKEND_CORS_ORIGINS: List[AnyHttpUrl] = []
+    PROJECT_NAME: str = "StayVacay"
+    BACKEND_CORS_ORIGINS: List[AnyHttpUrl] = os.getenv(
+        "BACKEND_CORS_ORIGINS",
+        [
+            "http://localhost:8000",
+            "https://localhost:8000",
+            "http://localhost",
+            "https://localhost",
+        ],
+    )
 
     @validator("BACKEND_CORS_ORIGINS", pre=True)
     def assemble_cors_origins(cls, v: Union[str, List[str]]) -> Union[List[str], str]:
@@ -19,8 +26,8 @@ class Settings(BaseSettings):
 
     POSTGRES_SERVER: str = os.getenv("POSTGRES_SERVER", "localhost")
     POSTGRES_USER: str = os.getenv("POSTGRES_USER", "stayvacay")
-    POSTGRES_PASSWORD: str= os.getenv("POSTGRES_PASSWORD", "stayvacay")
-    POSTGRES_DB: str= os.getenv("POSTGRES_DB", "stayvacay")
+    POSTGRES_PASSWORD: str = os.getenv("POSTGRES_PASSWORD", "stayvacay")
+    POSTGRES_DB: str = os.getenv("POSTGRES_DB", "stayvacay")
     DATABASE_URI: Optional[PostgresDsn] = None
 
     @validator("DATABASE_URI", pre=True)
@@ -34,11 +41,9 @@ class Settings(BaseSettings):
             host=values.get("POSTGRES_SERVER"),
             path=f"/{values.get('POSTGRES_DB') or ''}",
         )
-    
 
     class Config:
         case_sensitive = True
-        env_file = ".env"
 
 
 settings = Settings()
