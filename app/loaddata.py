@@ -1,3 +1,4 @@
+import math
 import asyncio
 import json
 import os
@@ -24,7 +25,7 @@ async def main():
         )
         query = places.insert().values(place_model.dict())
         await database.execute(query)
-    await database.disconnect()
+    await database.disconnect() # on conflict postgres
 
 
 if __name__ == "__main__":
