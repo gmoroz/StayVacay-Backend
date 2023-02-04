@@ -2,7 +2,7 @@ import asyncio
 import json
 import os
 from db import database, metadata, engine, places
-from core.shemas import PlaceOut
+from app.core.schemas import PlaceOut
 
 DATA_PATH = os.path.join("core", "data", "places.json")
 
