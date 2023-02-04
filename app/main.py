@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from .core.config import settings
 from .db import database, metadata, engine
+from .core.endpoints import place
 
 metadata.create_all(engine)
 
@@ -32,3 +33,6 @@ async def startup():
 @app.on_event("shutdown")
 async def startup():
     await database.disconnect()
+
+
+app.include_router(place.router)
