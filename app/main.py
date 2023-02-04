@@ -2,7 +2,9 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from .core.config import settings
-from .db import database
+from .db import database, metadata, engine
+
+metadata.create_all(engine)
 
 
 def get_application():

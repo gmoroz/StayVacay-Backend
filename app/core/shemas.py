@@ -5,7 +5,7 @@ class PlaceBase(BaseModel):
     pass  # need to refactor this soon
 
 
-class PlaceOutDetail(PlaceBase):
+class PlaceOut(PlaceBase):
     pk: int
     title: str
     description: str

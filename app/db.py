@@ -1,7 +1,7 @@
 from sqlalchemy import create_engine, Table, Column, Integer, String, ARRAY, MetaData
 from databases import Database
 
-from .core.config import settings
+from core.config import settings
 
 engine = create_engine(settings.DATABASE_URI, pool_pre_ping=True)
 metadata = MetaData()
