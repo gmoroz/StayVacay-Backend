@@ -8,6 +8,8 @@ authors = ["gmoroz <12345hasek@gmail.com>"]
 python = "^3.9"
 fastapi = "^0.67.0"
 databases = {extras = ["postgresql"], version = "^0.7.0"}
+uvicorn = "^0.20.0"
+psycopg2-binary = "^2.9.5"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
