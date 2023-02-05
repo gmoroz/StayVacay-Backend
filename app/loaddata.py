@@ -1,16 +1,27 @@
 import asyncio
 import json
 import os
+from pathlib import Path
 
+from core.schemas import PlaceOut
 from db import database, engine, metadata, places
 
-from app.core.schemas import PlaceOut
+BASE_DIR = Path(__file__).resolve().parent.parent
+DATA_PATH = BASE_DIR / os.path.join("app", "core", "data", "places.json")
 
-DATA_PATH = os.path.join("core", "data", "places.json")
+
+async def is_db_empty() -> bool:
+    await database.connect()
+    place = await database.fetch_one(places.select())
+    await database.disconnect()
+    return place is None
 
 
 async def main():
     metadata.create_all(engine)
+
+    if not await is_db_empty():
+        exit(0)
 
     with open(DATA_PATH, "r", encoding="utf-8") as f:
         data = json.load(f)
@@ -26,7 +37,7 @@ async def main():
         )
         query = places.insert().values(place_model.dict())
         await database.execute(query)
-    await database.disconnect()  # on conflict postgres
+    await database.disconnect()
 
 
 if __name__ == "__main__":
