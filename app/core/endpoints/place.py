@@ -14,13 +14,13 @@ async def get_places(
 ):
     db_query = places.select()
 
-    if city is not None:
+    if city:
         db_query = db_query.where(places.c.city == city)
 
-    if price_from is not None:
+    if price_from:
         db_query = db_query.where(places.c.price >= price_from)
 
-    if price_to is not None:
+    if price_to:
         db_query = db_query.where(places.c.price <= price_to)
 
     return await database.fetch_all(query=db_query)
