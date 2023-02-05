@@ -1,3 +1,5 @@
+*.lock
+*.toml
 .gitignore
 .venv/
 __pycache__/
