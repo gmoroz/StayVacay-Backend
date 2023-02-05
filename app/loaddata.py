@@ -3,7 +3,7 @@ import json
 import os
 from pathlib import Path
 
-from core.schemas import PlaceOut
+from core.schemas import PlaceDetail
 from db import database, engine, metadata, places
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -30,7 +30,7 @@ async def main():
     for record in data:
         features_on = record.pop("features_on").split(", ")
         features_off = record.pop("features_off").split(", ")
-        place_model = PlaceOut(
+        place_model = PlaceDetail(
             **record,
             features_off=features_off,
             features_on=features_on,
