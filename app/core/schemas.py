@@ -2,16 +2,18 @@ from pydantic import BaseModel
 
 
 class PlaceBase(BaseModel):
-    pass  # need to refactor this soon
-
-
-class PlaceOut(PlaceBase):
     pk: int
     title: str
     description: str
     picture_url: str
-    price: int
-    country: str
     city: str
+    country: str
+
+
+class PlaceList(PlaceBase):
+    pass
+
+
+class PlaceDetail(PlaceBase):
     features_on: list[str]
     features_off: list[str]

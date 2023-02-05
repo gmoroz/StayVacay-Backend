@@ -1,11 +1,11 @@
-from core.schemas import PlaceOut
+from core.schemas import PlaceDetail, PlaceList
 from db import database, places
 from fastapi import APIRouter, HTTPException, Query, status
 
 router = APIRouter(tags=["places"])
 
 
-@router.get("/places/", response_model=list[PlaceOut])
+@router.get("/places/", response_model=list[PlaceList])
 async def get_places(
     city: str | None = None,
     price_from: int | None = Query(default=None, alias="from"),
@@ -25,7 +25,7 @@ async def get_places(
     return await database.fetch_all(query=db_query)
 
 
-@router.get("/places/{pk}", response_model=PlaceOut)
+@router.get("/places/{pk}", response_model=PlaceDetail)
 async def get_place(pk: int):
     query = places.select().where(places.c.pk == pk)
     if place := await database.fetch_one(query):
