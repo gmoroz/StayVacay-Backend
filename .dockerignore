@@ -1,0 +1,7 @@
+*.lock
+*.toml
+.gitignore
+.venv/
+__pycache__/
+*.md
+.git
