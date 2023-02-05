@@ -7,9 +7,19 @@ from .db import database, engine, metadata
 
 metadata.create_all(engine)
 
+tags_metadata = [
+    {
+        "name": "places",
+        "description": "`GET` all places/place by `id`. Filter by `price` (`from`, `to`), or/and `city`.",  # noqa: E501
+    },
+]
+
 
 def get_application():
-    _app = FastAPI(title=settings.PROJECT_NAME)
+    _app = FastAPI(
+        title=settings.PROJECT_NAME,
+        openapi_tags=tags_metadata,
+    )
 
     _app.add_middleware(
         CORSMiddleware,

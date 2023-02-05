@@ -9,7 +9,7 @@ router = APIRouter(tags=["places"])
 @router.get("/places/", response_model=list[PlaceOut])
 async def get_places(
     city: str | None = None,
-    price_from: int | None = Query(default=0, alias="from"),
+    price_from: int | None = Query(default=None, alias="from"),
     price_to: int | None = Query(default=None, alias="to"),
 ):
     db_query = places.select()
