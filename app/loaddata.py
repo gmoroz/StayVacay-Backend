@@ -1,8 +1,9 @@
-import math
 import asyncio
 import json
 import os
-from db import database, metadata, engine, places
+
+from db import database, engine, metadata, places
+
 from app.core.schemas import PlaceOut
 
 DATA_PATH = os.path.join("core", "data", "places.json")
@@ -25,7 +26,7 @@ async def main():
         )
         query = places.insert().values(place_model.dict())
         await database.execute(query)
-    await database.disconnect() # on conflict postgres
+    await database.disconnect()  # on conflict postgres
 
 
 if __name__ == "__main__":

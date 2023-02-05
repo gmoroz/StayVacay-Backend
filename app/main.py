@@ -2,8 +2,8 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from .core.config import settings
-from .db import database, metadata, engine
 from .core.endpoints import place
+from .db import database, engine, metadata
 
 metadata.create_all(engine)
 
@@ -13,7 +13,9 @@ def get_application():
 
     _app.add_middleware(
         CORSMiddleware,
-        allow_origins=[str(origin) for origin in settings.BACKEND_CORS_ORIGINS],
+        allow_origins=[
+            str(origin) for origin in settings.BACKEND_CORS_ORIGINS
+        ],  # noqa: E501
         allow_credentials=True,
         allow_methods=["GET"],
         allow_headers=["*"],
@@ -31,7 +33,7 @@ async def startup():
 
 
 @app.on_event("shutdown")
-async def startup():
+async def shutdown():
     await database.disconnect()
 
 

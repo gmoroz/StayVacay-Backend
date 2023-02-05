@@ -3,24 +3,21 @@ name = "stayvacay-backend"
 version = "0.1.0"
 description = ""
 authors = ["gmoroz <12345hasek@gmail.com>"]
+readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.9"
-fastapi = "^0.67.0"
+python = "^3.10"
 databases = {extras = ["postgresql"], version = "^0.7.0"}
 uvicorn = "^0.20.0"
+fastapi = "^0.89.1"
 psycopg2-binary = "^2.9.5"
+pre-commit = "^3.0.4"
+flake8 = "^6.0.0"
 
-[tool.poetry.dev-dependencies]
-pytest = "^5.2"
-pytest-cov = "^2.10.1"
-autoflake = "^1.4"
-flake8 = "^3.8.4"
-mypy = "^0.790"
-isort = "^5.0"
-pre-commit = "^2.8.2"
-black = "^20.8b1"
+
+[tool.poetry.group.dev.dependencies]
+mypy = "^0.991"
 
 [build-system]
-requires = ["poetry-core>=1.0.0"]
+requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
