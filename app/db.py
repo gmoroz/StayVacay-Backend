@@ -1,7 +1,6 @@
 import sqlalchemy as sq
+from core.config import settings
 from databases import Database
-
-from .core.config import settings
 
 engine = sq.create_engine(settings.DATABASE_URI, pool_pre_ping=True)
 metadata = sq.MetaData()

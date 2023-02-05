@@ -1,7 +1,6 @@
+from core.schemas import PlaceOut
+from db import database, places
 from fastapi import APIRouter, HTTPException, Query, status
-
-from app.core.schemas import PlaceOut
-from app.db import database, places
 
 router = APIRouter(tags=["places"])
 

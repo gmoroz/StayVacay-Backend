@@ -1,9 +1,8 @@
+from core.config import settings
+from core.endpoints import place
+from db import database, engine, metadata
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-
-from .core.config import settings
-from .core.endpoints import place
-from .db import database, engine, metadata
 
 metadata.create_all(engine)
 
