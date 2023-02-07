@@ -26,7 +26,7 @@ def get_application():
             str(origin) for origin in settings.BACKEND_CORS_ORIGINS
         ],  # noqa: E501
         allow_credentials=True,
-        allow_methods=["GET"],
+        allow_methods=["*"],
         allow_headers=["*"],
     )
 
