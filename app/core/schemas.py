@@ -8,6 +8,7 @@ class PlaceBase(BaseModel):
     picture_url: str
     city: str
     country: str
+    price: int
 
 
 class PlaceList(PlaceBase):
