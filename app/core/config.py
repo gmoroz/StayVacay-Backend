@@ -3,20 +3,14 @@ from typing import Any
 
 from pydantic import BaseSettings, PostgresDsn, validator
 
-LOCAL_CORS = [
-    "http://localhost:8089",
-    "https://localhost:8089",
-    "http://localhost:3000",
-    "https://localhost:3000",
-    "https://localhost",
-]
+ALL_CORS = ["*"]
 
 
 class Settings(BaseSettings):
     PROJECT_NAME: str = "StayVacay"
     BACKEND_CORS_ORIGINS: str | list[str] = os.getenv(
         "BACKEND_CORS_ORIGINS",
-        LOCAL_CORS,
+        ALL_CORS,
     )
 
     @validator("BACKEND_CORS_ORIGINS", pre=True)
