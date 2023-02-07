@@ -17,3 +17,6 @@ class PlaceList(PlaceBase):
 class PlaceDetail(PlaceBase):
     features_on: list[str]
     features_off: list[str]
+    host_name: str
+    host_phone: str
+    host_location: str
