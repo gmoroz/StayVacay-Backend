@@ -7,5 +7,6 @@
 Документация будет доступна по адресу `http://localhost:8089/docs`
 
 ### Остановка приложения:
+Если надо удалить данные бд, добавьте в конце команды флаг `-v`
 
-    docker-compose -f docker-compose-backend.yaml down -v
+    docker-compose -f docker-compose-backend.yaml down 
