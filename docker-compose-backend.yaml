@@ -5,6 +5,7 @@ x-common-variables: &common-variables
   POSTGRES_PASSWORD: stayvacay
   POSTGRES_DB: stayvacay
   POSTGRES_SERVER: db
+  PORT: 8089
 
 services:
   web:
