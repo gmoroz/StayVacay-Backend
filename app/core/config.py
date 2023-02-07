@@ -8,6 +8,7 @@ LOCAL_CORS = [
     "https://localhost:8089",
     "http://localhost:3000",
     "https://localhost:3000",
+    "localhost:3000",
     "http://localhost",
     "https://localhost",
 ]
