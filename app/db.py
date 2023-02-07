@@ -20,7 +20,6 @@ places = sq.Table(
     sq.Column("host_name", sq.String(100)),
     sq.Column("host_phone", sq.String(100)),
     sq.Column("host_location", sq.String(200)),
-    
 )
 
 database = Database(settings.DATABASE_URI)  # type: ignore
