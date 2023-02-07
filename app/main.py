@@ -4,7 +4,6 @@ from app.db import database, engine, metadata
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-metadata.create_all(engine)
 
 tags_metadata = [
     {

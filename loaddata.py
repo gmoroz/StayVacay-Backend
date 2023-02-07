@@ -1,14 +1,12 @@
 import asyncio
 import json
 import os
-from pathlib import Path
 
 from app.core.schemas import PlaceDetail
-from db import engine, metadata, places, database
+from app.db import places, database
 
 
-BASE_DIR = Path(__file__).resolve().parent.parent
-DATA_PATH = BASE_DIR / os.path.join("app", "core", "data", "places.json")
+DATA_PATH = os.path.join("app", "core", "data", "places.json")
 
 
 async def is_db_empty() -> bool:
@@ -18,8 +16,6 @@ async def is_db_empty() -> bool:
 
 
 async def main():
-    metadata.create_all(engine)
-
     if not await is_db_empty():
         exit(0)
 
