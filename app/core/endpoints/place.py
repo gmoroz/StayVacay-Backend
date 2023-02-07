@@ -25,7 +25,7 @@ async def get_places(
     return await database.fetch_all(query=db_query)
 
 
-@router.get("/places/{pk}", response_model=PlaceDetail)
+@router.get("/places/{pk}/", response_model=PlaceDetail)
 async def get_place(pk: int):
     query = places.select().where(places.c.pk == pk)
     if place := await database.fetch_one(query):
