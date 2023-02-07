@@ -1,6 +1,6 @@
-from core.config import settings
-from core.endpoints import place
-from db import database, engine, metadata
+from app.core.config import settings
+from app.core.endpoints import place
+from app.db import database, engine, metadata
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 

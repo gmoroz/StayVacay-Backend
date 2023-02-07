@@ -2,7 +2,10 @@ FROM tiangolo/uvicorn-gunicorn-fastapi:python3.10
 
 ENV PYTHONPATH "${PYTHONPATH}:/"
 
-COPY ./app /app
+WORKDIR /code
+
+COPY ./app /code/
+COPY ./allembic /code/
 COPY entrypoint.sh .
 
 COPY requirements.txt .

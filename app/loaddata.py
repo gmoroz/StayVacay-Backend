@@ -3,7 +3,7 @@ import json
 import os
 from pathlib import Path
 
-from core.schemas import PlaceDetail
+from app.core.schemas import PlaceDetail
 from db import engine, metadata, places, database
 
 

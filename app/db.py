@@ -1,5 +1,5 @@
 import sqlalchemy as sq
-from core.config import settings
+from app.core.config import settings
 from databases import Database
 
 engine = sq.create_engine(settings.DATABASE_URI, pool_pre_ping=True)

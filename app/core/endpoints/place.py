@@ -1,5 +1,5 @@
-from core.schemas import PlaceDetail, PlaceList
-from db import database, places
+from app.core.schemas import PlaceDetail, PlaceList
+from app.db import database, places
 from fastapi import APIRouter, HTTPException, Query, status
 
 router = APIRouter(tags=["places"])
