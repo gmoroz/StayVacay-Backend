@@ -5,12 +5,25 @@ from fastapi import APIRouter, HTTPException, Query, status
 router = APIRouter(tags=["places"])
 
 
+def parse_price(price_str: str | None) -> int | None:
+    try:
+        return int(price_str) # type: ignore
+    except (ValueError, TypeError):
+        return None
+    raise HTTPException(
+        status.HTTP_422_UNPROCESSABLE_ENTITY, detail="value is not a valid number"
+    )
+
+
 @router.get("/places/", response_model=list[PlaceList])
 async def get_places(
     city: str | None = None,
-    price_from: int | None = Query(default=None, alias="from"),
-    price_to: int | None = Query(default=None, alias="to"),
+    price_from: str | None = Query(default=None, alias="from"),
+    price_to: str | None = Query(default=None, alias="to"),
 ):
+    price_from = parse_price(price_from)  # type: ignore
+    price_to = parse_price(price_to)  # type: ignore
+
     db_query = places.select()
 
     if city:
